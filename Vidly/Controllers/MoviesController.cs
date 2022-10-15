@@ -45,14 +45,9 @@ namespace Vidly.Controllers
                 viewModel.NumberInStock = movie.NumberInStock;
                 viewModel.ReleaseDate = movie.ReleaseDate;
             }
-            try
-            {
+            
                 _context.SaveChanges();
-            }
-            catch(DbEntityValidationException ex)
-            {
-                Console.WriteLine(ex);
-            }
+            
             return RedirectToAction("Index", "Movies");
         }
         public ActionResult Edit(int id)
