@@ -16,6 +16,8 @@ namespace Vidly.App_Start
             Mapper.CreateMap<CustomerDto, Customer>(); // map CustomerDto to Customer
             Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MovieDto, Movie>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+
         }
     }
 }
