@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 //using Fluent.Infrastructure.FluentStartup;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Vidly.Models;
 
 namespace Vidly.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -33,8 +34,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-                return _signInManager;
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                //return _signInManager;
             }
             private set
             {
@@ -46,8 +47,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                return _userManager ;
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                //return _userManager;
             }
             private set
             {
@@ -434,8 +435,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return HttpContext.GetOwinContext().Authentication;
-                return null;
+                return HttpContext.GetOwinContext().Authentication;
+                //return null;
             }
         }
 
@@ -481,7 +482,7 @@ namespace Vidly.Controllers
                 {
                     properties.Dictionary[XsrfKey] = UserId;
                 }
-                //context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
         #endregion

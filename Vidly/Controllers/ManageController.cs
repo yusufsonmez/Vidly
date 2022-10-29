@@ -31,8 +31,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-                return _signInManager;
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                //return _signInManager;
             }
             private set
             {
@@ -44,8 +44,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                return _userManager;
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                //return _userManager;
             }
             private set
             {
@@ -342,8 +342,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                //return HttpContext.GetOwinContext().Authentication;
-                return null;
+                return HttpContext.GetOwinContext().Authentication;
+                //return null;
             }
         }
 
