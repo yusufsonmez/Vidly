@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Fluent.Infrastructure.FluentStartup;
+//using Fluent.Infrastructure.FluentStartup;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -31,7 +31,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                //return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                return _signInManager;
             }
             private set
             {
@@ -43,7 +44,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                //return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager;
             }
             private set
             {
@@ -294,7 +296,7 @@ namespace Vidly.Controllers
             return View(new ManageLoginsViewModel
             {
                 CurrentLogins = userLogins,
-                OtherLogins = otherLogins
+                //OtherLogins = otherLogins
             });
         }
 
@@ -340,7 +342,8 @@ namespace Vidly.Controllers
         {
             get
             {
-                return HttpContext.GetOwinContext().Authentication;
+                //return HttpContext.GetOwinContext().Authentication;
+                return null;
             }
         }
 
