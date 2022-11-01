@@ -8,6 +8,7 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+    [AllowAnonymous]
     public class MoviesController : Controller
     {
 
@@ -20,7 +21,9 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
-        public ActionResult New()
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
+        public ViewResult New()
         {
             var genreTypes = _context.Genres.ToList();
             var viewModel = new MovieFormViewModel
@@ -81,7 +84,10 @@ namespace Vidly.Controllers
         }
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageMovies))
+                return View("List");
+            
+            return View("ReadOnlyList");
         }
 
         private IEnumerable<Movie> GetMovies()
